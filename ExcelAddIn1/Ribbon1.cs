@@ -93,5 +93,57 @@ namespace ExcelAddIn1
                 
             }
         }
+
+        private void Help_Click(object sender, RibbonControlEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://vedaprakashms.github.io/");
+        }
+
+        private void Github_repo_Click(object sender, RibbonControlEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/vedaprakashms/patent_tools_excel_addin");
+        }
+
+        private void Author_Click(object sender, RibbonControlEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/vedaprakashms/patent_tools_excel_addin/blob/master/Author_about");
+        }
+
+        private void License_Click(object sender, RibbonControlEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/vedaprakashms/patent_tools_excel_addin/blob/master/LICENSE");
+        }
+
+        private void USPTO_PDF_Click(object sender, RibbonControlEventArgs e)
+        {
+            Excel.Worksheet activeworksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            Excel.Range range = Globals.ThisAddIn.Application.Selection;
+            foreach (Excel.Range k in range.Cells)
+            {
+                string pattern = "\\s+";
+                string temp = k.Text;
+                string replacement = "";
+                Regex rgx = new Regex(pattern);
+                string result = rgx.Replace(temp, replacement);
+                k.Value2 = result;
+                pattern = "US";
+                rgx = new Regex(pattern);
+                result = rgx.Replace(result, replacement);
+                pattern = "[A|B|C].";
+                rgx = new Regex(pattern);
+                result = rgx.Replace(result, replacement);
+
+
+                if (result.Length < 11)
+                {
+                    k.Hyperlinks.Add(k, "https://pdfpiw.uspto.gov/.piw?PageNum=0&docid="+result);
+                }
+                else
+                {
+                    k.Hyperlinks.Add(k, "https://pdfaiw.uspto.gov/.aiw?PageNum=0&docid=" + result);
+                }
+
+            }
+        }
     }
 }
