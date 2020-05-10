@@ -34,24 +34,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Microsoft.Office.Tools.Ribbon.RibbonDialogLauncher ribbonDialogLauncherImpl1 = this.Factory.CreateRibbonDialogLauncher();
+            Microsoft.Office.Tools.Ribbon.RibbonDialogLauncher ribbonDialogLauncherImpl2 = this.Factory.CreateRibbonDialogLauncher();
+            Microsoft.Office.Tools.Ribbon.RibbonDialogLauncher ribbonDialogLauncherImpl3 = this.Factory.CreateRibbonDialogLauncher();
             this.Patent_tools = this.Factory.CreateRibbonTab();
-            this.Hyperlinker = this.Factory.CreateRibbonGroup();
-            this.G_patents = this.Factory.CreateRibbonButton();
-            this.Espacenet = this.Factory.CreateRibbonButton();
-            this.USPTO = this.Factory.CreateRibbonButton();
-            this.PDF_Link = this.Factory.CreateRibbonGroup();
             this.Author_data = this.Factory.CreateRibbonGroup();
-            this.label1 = this.Factory.CreateRibbonLabel();
             this.Help = this.Factory.CreateRibbonButton();
             this.Github_details = this.Factory.CreateRibbonMenu();
             this.Github_repo = this.Factory.CreateRibbonButton();
             this.Author = this.Factory.CreateRibbonButton();
             this.License = this.Factory.CreateRibbonButton();
+            this.label1 = this.Factory.CreateRibbonLabel();
+            this.Hyperlinker = this.Factory.CreateRibbonGroup();
+            this.G_patents = this.Factory.CreateRibbonButton();
+            this.Espacenet = this.Factory.CreateRibbonButton();
+            this.USPTO = this.Factory.CreateRibbonButton();
+            this.PDF_Link = this.Factory.CreateRibbonGroup();
             this.USPTO_PDF = this.Factory.CreateRibbonButton();
+            this.PatRegister = this.Factory.CreateRibbonGroup();
+            this.USPTO_Assign = this.Factory.CreateRibbonButton();
+            this.EP_reg = this.Factory.CreateRibbonButton();
+            this.Global_dos = this.Factory.CreateRibbonButton();
             this.Patent_tools.SuspendLayout();
+            this.Author_data.SuspendLayout();
             this.Hyperlinker.SuspendLayout();
             this.PDF_Link.SuspendLayout();
-            this.Author_data.SuspendLayout();
+            this.PatRegister.SuspendLayout();
             this.SuspendLayout();
             // 
             // Patent_tools
@@ -60,40 +68,9 @@
             this.Patent_tools.Groups.Add(this.Author_data);
             this.Patent_tools.Groups.Add(this.Hyperlinker);
             this.Patent_tools.Groups.Add(this.PDF_Link);
-            this.Patent_tools.Label = "Patent_Tools";
+            this.Patent_tools.Groups.Add(this.PatRegister);
+            this.Patent_tools.Label = "IP productivity Tools";
             this.Patent_tools.Name = "Patent_tools";
-            // 
-            // Hyperlinker
-            // 
-            this.Hyperlinker.Items.Add(this.G_patents);
-            this.Hyperlinker.Items.Add(this.Espacenet);
-            this.Hyperlinker.Items.Add(this.USPTO);
-            this.Hyperlinker.Label = "Hyperlinker";
-            this.Hyperlinker.Name = "Hyperlinker";
-            // 
-            // G_patents
-            // 
-            this.G_patents.Label = "Google patents";
-            this.G_patents.Name = "G_patents";
-            this.G_patents.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.G_patents_Click);
-            // 
-            // Espacenet
-            // 
-            this.Espacenet.Label = "Espacenet";
-            this.Espacenet.Name = "Espacenet";
-            this.Espacenet.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Espacenet_Click);
-            // 
-            // USPTO
-            // 
-            this.USPTO.Label = "USPTO";
-            this.USPTO.Name = "USPTO";
-            this.USPTO.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.USPTO_Click);
-            // 
-            // PDF_Link
-            // 
-            this.PDF_Link.Items.Add(this.USPTO_PDF);
-            this.PDF_Link.Label = "PDF links";
-            this.PDF_Link.Name = "PDF_Link";
             // 
             // Author_data
             // 
@@ -102,11 +79,6 @@
             this.Author_data.Items.Add(this.label1);
             this.Author_data.Label = "About";
             this.Author_data.Name = "Author_data";
-            // 
-            // label1
-            // 
-            this.label1.Label = "© 2020, Vedaprakash M S";
-            this.label1.Name = "label1";
             // 
             // Help
             // 
@@ -144,11 +116,83 @@
             this.License.ShowImage = true;
             this.License.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.License_Click);
             // 
+            // label1
+            // 
+            this.label1.Label = "© 2020, Vedaprakash M S";
+            this.label1.Name = "label1";
+            // 
+            // Hyperlinker
+            // 
+            this.Hyperlinker.DialogLauncher = ribbonDialogLauncherImpl1;
+            this.Hyperlinker.Items.Add(this.G_patents);
+            this.Hyperlinker.Items.Add(this.Espacenet);
+            this.Hyperlinker.Items.Add(this.USPTO);
+            this.Hyperlinker.Label = "Hyperlinker";
+            this.Hyperlinker.Name = "Hyperlinker";
+            // 
+            // G_patents
+            // 
+            this.G_patents.Label = "Google patents";
+            this.G_patents.Name = "G_patents";
+            this.G_patents.ScreenTip = "Select a Range to hyperlink to google patents";
+            this.G_patents.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.G_patents_Click);
+            // 
+            // Espacenet
+            // 
+            this.Espacenet.Label = "Espacenet";
+            this.Espacenet.Name = "Espacenet";
+            this.Espacenet.ScreenTip = "Select a Range to hyperlink to Espacenet";
+            this.Espacenet.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Espacenet_Click);
+            // 
+            // USPTO
+            // 
+            this.USPTO.Label = "USPTO";
+            this.USPTO.Name = "USPTO";
+            this.USPTO.ScreenTip = "Select a Range to hyperlink to USPTO";
+            this.USPTO.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.USPTO_Click);
+            // 
+            // PDF_Link
+            // 
+            this.PDF_Link.DialogLauncher = ribbonDialogLauncherImpl2;
+            this.PDF_Link.Items.Add(this.USPTO_PDF);
+            this.PDF_Link.Label = "PDF links";
+            this.PDF_Link.Name = "PDF_Link";
+            // 
             // USPTO_PDF
             // 
             this.USPTO_PDF.Label = "USPTO";
             this.USPTO_PDF.Name = "USPTO_PDF";
+            this.USPTO_PDF.ScreenTip = "Select a Range to hyperlink to USPTO pdfs";
             this.USPTO_PDF.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.USPTO_PDF_Click);
+            // 
+            // PatRegister
+            // 
+            this.PatRegister.DialogLauncher = ribbonDialogLauncherImpl3;
+            this.PatRegister.Items.Add(this.USPTO_Assign);
+            this.PatRegister.Items.Add(this.EP_reg);
+            this.PatRegister.Items.Add(this.Global_dos);
+            this.PatRegister.Label = "Register";
+            this.PatRegister.Name = "PatRegister";
+            // 
+            // USPTO_Assign
+            // 
+            this.USPTO_Assign.Label = "USPTO Assiginment";
+            this.USPTO_Assign.Name = "USPTO_Assign";
+            this.USPTO_Assign.ScreenTip = "Select a Range to hyperlink to US assiginments";
+            this.USPTO_Assign.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.USPTO_Assign_Click);
+            // 
+            // EP_reg
+            // 
+            this.EP_reg.Label = "EP Register";
+            this.EP_reg.Name = "EP_reg";
+            this.EP_reg.ScreenTip = "Select a Range to hyperlink to EP register";
+            this.EP_reg.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.EP_reg_Click);
+            // 
+            // Global_dos
+            // 
+            this.Global_dos.Label = "Global Dossier";
+            this.Global_dos.Name = "Global_dos";
+            this.Global_dos.ScreenTip = "Select a Range to hyperlink to Global Dossier";
             // 
             // Ribbon1
             // 
@@ -158,12 +202,14 @@
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.Ribbon1_Load);
             this.Patent_tools.ResumeLayout(false);
             this.Patent_tools.PerformLayout();
+            this.Author_data.ResumeLayout(false);
+            this.Author_data.PerformLayout();
             this.Hyperlinker.ResumeLayout(false);
             this.Hyperlinker.PerformLayout();
             this.PDF_Link.ResumeLayout(false);
             this.PDF_Link.PerformLayout();
-            this.Author_data.ResumeLayout(false);
-            this.Author_data.PerformLayout();
+            this.PatRegister.ResumeLayout(false);
+            this.PatRegister.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -184,6 +230,10 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton Author;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton License;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton USPTO_PDF;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup PatRegister;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton USPTO_Assign;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton EP_reg;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton Global_dos;
     }
 
     partial class ThisRibbonCollection

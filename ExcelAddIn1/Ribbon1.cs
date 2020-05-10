@@ -20,18 +20,22 @@ namespace ExcelAddIn1
 
         private void G_patents_Click(object sender, RibbonControlEventArgs e)
         {
-            
+
             Excel.Worksheet activeworksheet = Globals.ThisAddIn.Application.ActiveSheet;
             Excel.Range range = Globals.ThisAddIn.Application.Selection;
-            foreach(Excel.Range k in range.Cells)
+            foreach (Excel.Range k in range.Cells)
             {
-                string pattern = "\\s+";
-                string temp = k.Text;
-                string replacement = "";
-                Regex rgx = new Regex(pattern);
-                string result = rgx.Replace(temp, replacement);
-                k.Value2 = result;
-                k.Hyperlinks.Add(k, "https://patents.google.com/patent/" + result+"/en");
+                if (k.Value2 != null)
+                {
+                    string pattern = "\\s+";
+                    string temp = k.Text;
+                    string replacement = "";
+                    Regex rgx = new Regex(pattern);
+                    string result = rgx.Replace(temp, replacement);
+                    k.Value2 = result;
+                    k.Hyperlinks.Add(k, "https://patents.google.com/patent/" + result + "/en");
+                }
+
             }
         }
 
@@ -41,13 +45,17 @@ namespace ExcelAddIn1
             Excel.Range range = Globals.ThisAddIn.Application.Selection;
             foreach (Excel.Range k in range.Cells)
             {
-                string pattern = "\\s+";
-                string temp = k.Text;
-                string replacement = "";
-                Regex rgx = new Regex(pattern);
-                string result = rgx.Replace(temp, replacement);
-                k.Value2 = result;
-                k.Hyperlinks.Add(k, "https://worldwide.espacenet.com/patent/search?q=" + result );
+                if (k.Value2 != null)
+                {
+                    string pattern = "\\s+";
+                    string temp = k.Text;
+                    string replacement = "";
+                    Regex rgx = new Regex(pattern);
+                    string result = rgx.Replace(temp, replacement);
+                    k.Value2 = result;
+                    k.Hyperlinks.Add(k, "https://worldwide.espacenet.com/patent/search?q=" + result);
+                }
+
             }
         }
 
@@ -57,42 +65,36 @@ namespace ExcelAddIn1
             Excel.Range range = Globals.ThisAddIn.Application.Selection;
             foreach (Excel.Range k in range.Cells)
             {
-                string pattern = "\\s+";
-                string temp = k.Text;
-                string replacement = "";
-                Regex rgx = new Regex(pattern);
-                string result = rgx.Replace(temp, replacement);
-                k.Value2 = result;
-                pattern = "US";
-                rgx = new Regex(pattern);
-                result = rgx.Replace(result, replacement);
-                pattern = "[A|B|C].";
-                rgx = new Regex(pattern);
-                result = rgx.Replace(result, replacement);
+                if (k.Value2 != null)
+                {
+                    string pattern = "\\s+";
+                    string temp = k.Text;
+                    string replacement = "";
+                    Regex rgx = new Regex(pattern);
+                    string result = rgx.Replace(temp, replacement);
+                    k.Value2 = result;
+                    pattern = "US";
+                    rgx = new Regex(pattern);
+                    result = rgx.Replace(result, replacement);
+                    pattern = "[A|B|C].";
+                    rgx = new Regex(pattern);
+                    result = rgx.Replace(result, replacement);
 
 
-                if (result.Length <11)
-                {
-                    k.Hyperlinks.Add(k, "http://patft.uspto.gov/netacgi/nph-Parser?TERM1="+result+"&Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=0&f=S&l=50");
+                    if (result.Length < 11)
+                    {
+                        k.Hyperlinks.Add(k, "http://patft.uspto.gov/netacgi/nph-Parser?TERM1=" + result + "&Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=0&f=S&l=50");
+                    }
+                    else
+                    {
+                        k.Hyperlinks.Add(k, "http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=1&f=G&l=50&s1=%22" + result + "%22.PGNR.&OS=DN/" + result + "&RS=DN/" + result);
+                    }
                 }
-                else
-                {
-                    k.Hyperlinks.Add(k, "http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=1&f=G&l=50&s1=%22"+result+"%22.PGNR.&OS=DN/"+result+"&RS=DN/"+result);
-                }
+
 
             }
         }
 
-        private void PDF_USPTO_Click(object sender, RibbonControlEventArgs e)
-        {
-            Excel.Worksheet activeworksheet = Globals.ThisAddIn.Application.ActiveSheet;
-            Excel.Range range = Globals.ThisAddIn.Application.Selection;
-            foreach (Excel.Range k in range.Cells)
-            {
-                k.Hyperlinks.Add(k, "https://worldwide.espacenet.com/patent/search?q=" + k.Text);
-                
-            }
-        }
 
         private void Help_Click(object sender, RibbonControlEventArgs e)
         {
@@ -120,30 +122,103 @@ namespace ExcelAddIn1
             Excel.Range range = Globals.ThisAddIn.Application.Selection;
             foreach (Excel.Range k in range.Cells)
             {
-                string pattern = "\\s+";
-                string temp = k.Text;
-                string replacement = "";
-                Regex rgx = new Regex(pattern);
-                string result = rgx.Replace(temp, replacement);
-                k.Value2 = result;
-                pattern = "US";
-                rgx = new Regex(pattern);
-                result = rgx.Replace(result, replacement);
-                pattern = "[A|B|C].";
-                rgx = new Regex(pattern);
-                result = rgx.Replace(result, replacement);
+                if (k.Value2 != null)
+                {
+                    string pattern = "\\s+";
+                    string temp = k.Text;
+                    string replacement = "";
+                    Regex rgx = new Regex(pattern);
+                    string result = rgx.Replace(temp, replacement);
+                    k.Value2 = result;
+                    pattern = "US";
+                    rgx = new Regex(pattern);
+                    result = rgx.Replace(result, replacement);
+                    pattern = "[A|B|C].";
+                    rgx = new Regex(pattern);
+                    result = rgx.Replace(result, replacement);
 
 
-                if (result.Length < 11)
-                {
-                    k.Hyperlinks.Add(k, "https://pdfpiw.uspto.gov/.piw?PageNum=0&docid="+result);
+                    if (result.Length < 11)
+                    {
+                        k.Hyperlinks.Add(k, "https://pdfpiw.uspto.gov/.piw?PageNum=0&docid=" + result);
+                    }
+                    else
+                    {
+                        k.Hyperlinks.Add(k, "https://pdfaiw.uspto.gov/.aiw?PageNum=0&docid=" + result);
+                    }
                 }
-                else
-                {
-                    k.Hyperlinks.Add(k, "https://pdfaiw.uspto.gov/.aiw?PageNum=0&docid=" + result);
-                }
+
 
             }
+        }
+
+        private void USPTO_Assign_Click(object sender, RibbonControlEventArgs e)
+        {
+            Excel.Worksheet activeworksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            Excel.Range range = Globals.ThisAddIn.Application.Selection;
+            foreach (Excel.Range k in range.Cells)
+            {
+                if (k.Value2 != null)
+                {
+                    string pattern = "\\s+";
+                    string temp = k.Text;
+                    string replacement = "";
+                    Regex rgx = new Regex(pattern);
+                    string result = rgx.Replace(temp, replacement);
+                    k.Value2 = result;
+                    pattern = "US";
+                    rgx = new Regex(pattern);
+                    result = rgx.Replace(result, replacement);
+                    pattern = "[A|B|C].";
+                    rgx = new Regex(pattern);
+                    result = rgx.Replace(result, replacement);
+
+
+                    if (result.Length < 11)
+                    {
+                        k.Hyperlinks.Add(k, "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?id=" + result + "&type=patNum");
+                    }
+                    else
+                    {
+                        k.Hyperlinks.Add(k, "https://assignment.uspto.gov/patent/index.html#/patent/search/resultAbstract?id=" + result + "&type=publNum");
+                    }
+                }
+            }
+
+        }
+
+        private void EP_reg_Click(object sender, RibbonControlEventArgs e)
+        {//https://register.epo.org/espacenet/regviewer?DB=REG&CY=en&LG=en&PN=EP1943619
+            Excel.Worksheet activeworksheet = Globals.ThisAddIn.Application.ActiveSheet;
+            Excel.Range range = Globals.ThisAddIn.Application.Selection;
+            foreach (Excel.Range k in range.Cells)
+            {
+                if (k.Value2 != null)
+                {
+                    string pattern = "\\s+";
+                    string temp = k.Text;
+                    string replacement = "";
+                    Regex rgx = new Regex(pattern);
+                    string result = rgx.Replace(temp, replacement);
+                    k.Value2 = result;
+                    result = rgx.Replace(result, replacement);
+                    pattern = "[A|B|C|D].";
+                    rgx = new Regex(pattern);
+                    result = rgx.Replace(result, replacement);
+
+
+                    if (result.Length < 10)
+                    {
+                        k.Hyperlinks.Add(k, "https://register.epo.org/espacenet/regviewer?DB=REG&CY=en&LG=en&PN=" + result);
+                    }
+                    else
+                    {
+                        k.Hyperlinks.Add(k, "https://register.epo.org/application?number=" + result);
+                    }
+                }
+            }
+
+
         }
     }
 }
