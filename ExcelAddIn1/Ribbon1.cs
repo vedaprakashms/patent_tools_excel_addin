@@ -63,16 +63,23 @@ namespace ExcelAddIn1
                 Regex rgx = new Regex(pattern);
                 string result = rgx.Replace(temp, replacement);
                 k.Value2 = result;
-                if (result.Length > 8)
+                pattern = "US";
+                rgx = new Regex(pattern);
+                result = rgx.Replace(result, replacement);
+                pattern = "[A|B|C].";
+                rgx = new Regex(pattern);
+                result = rgx.Replace(result, replacement);
+
+
+                if (result.Length <11)
                 {
-                    //http://patft.uspto.gov/netacgi/nph-Parser?TERM1=10298608&Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=0&f=S&l=50;
-                    k.Hyperlinks.Add(k, "https://worldwide.espacenet.com/patent/search?q=" + k.Text);
+                    k.Hyperlinks.Add(k, "http://patft.uspto.gov/netacgi/nph-Parser?TERM1="+result+"&Sect1=PTO1&Sect2=HITOFF&d=PALL&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.htm&r=0&f=S&l=50");
                 }
                 else
                 {
-                    k.Hyperlinks.Add(k, "https://worldwide.espacenet.com/patent/search?q=" + k.Text);
+                    k.Hyperlinks.Add(k, "http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO1&Sect2=HITOFF&d=PG01&p=1&u=%2Fnetahtml%2FPTO%2Fsrchnum.html&r=1&f=G&l=50&s1=%22"+result+"%22.PGNR.&OS=DN/"+result+"&RS=DN/"+result);
                 }
-                
+
             }
         }
 
