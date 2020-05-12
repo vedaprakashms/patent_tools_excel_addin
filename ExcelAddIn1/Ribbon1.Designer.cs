@@ -193,6 +193,7 @@
             this.Global_dos.Label = "Global Dossier";
             this.Global_dos.Name = "Global_dos";
             this.Global_dos.ScreenTip = "Select a Range to hyperlink to Global Dossier";
+            this.Global_dos.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Global_dos_Click);
             // 
             // Ribbon1
             // 

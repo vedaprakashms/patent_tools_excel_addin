@@ -220,5 +220,10 @@ namespace ExcelAddIn1
 
 
         }
+
+        private void Global_dos_Click(object sender, RibbonControlEventArgs e)
+        {
+            MessageBox.Show("This is yet in development!!!");
+        }
     }
 }
