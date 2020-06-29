@@ -200,6 +200,7 @@
       <DependentUpon>Ribbon1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ExcelAddIn1_TemporaryKey.pfx" />
+    <None Include="ExcelAddIn_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -237,7 +238,7 @@
     </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>83F5AB06059E0297BAF113F8841FFE5834679FEA</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>14ECF6625B44D4B8914A74B923CAB583A00ECB0F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
